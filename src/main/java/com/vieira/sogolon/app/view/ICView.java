@@ -2,6 +2,7 @@ package com.vieira.sogolon.app.view;
 
 import com.vieira.sogolon.app.controller.Rebel;
 import com.vieira.sogolon.app.enums.Order;
+import com.vieira.sogolon.app.enums.Race;
 import com.vieira.sogolon.app.model.RebelTeam;
 import lombok.Getter;
 
@@ -96,7 +97,6 @@ public class ICView {
             case "true":
                 team.newRebel(rebel);
                 System.out.println("#: Rebel added to the team successfully!");
-//                team.printList();
                 break;
             case "false":
                 System.out.println("#: Unfortunately, you are not able to join us!");
@@ -108,9 +108,9 @@ public class ICView {
     }
 
     private Order chooseOrder() {
-        int index = -1;
+        int index;
 
-        System.out.println("#: Do you want to print the rebels list by: ");
+        System.out.println("#: Do you want to print the rebels list sorted by: ");
 
         for (Order order : Order.values()) {
             System.out.printf("%d - %s %n", order.ordinal(), order.name());
@@ -122,23 +122,25 @@ public class ICView {
             try {
                 index = scan.nextInt();
 
-                if (index < 0 || index >= Order.values().length) {
-                    System.out.println("#: You entered an invalid index! Please, correct it!");
-                    chooseOrder();
-                    return null;
+                if (index >= 0 && index <= Order.values().length) {
+
+                    for (Order order : Order.values()) {
+                        if (index == order.ordinal()) {
+                            return Order.valueOf(order.name());
+                        }
+                    }
+
                 }
 
-                for (Order order : Order.values()) {
-                    if (index == order.ordinal()) {
-                        return Order.valueOf(order.name());
-                    }
-                }
+                System.out.println("#: You entered an invalid index! Please, correct it!");
+                System.out.print("#: ");
 
             } catch (InputMismatchException e) {
                 System.out.println("#: Invalid index! Please, fill in this field correctly!");
                 System.out.print("#: ");
             }
 
+            index = -1;
             scan.nextLine();
 
         } while (index < 0);

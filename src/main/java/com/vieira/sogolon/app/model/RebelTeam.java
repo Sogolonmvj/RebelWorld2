@@ -28,8 +28,6 @@ public class RebelTeam {
 
     public HashMap selectionSort(HashMap accepted, String sortBy) {
 
-        System.out.println("Before ordering: " + accepted);
-
         for (int index = 0; index < accepted.size(); index++) {
             int greaterValueIndex = index;
 
@@ -84,8 +82,6 @@ public class RebelTeam {
             accepted.put(index, smallestValue);
 
         }
-
-        System.out.println("After ordering: " + accepted);
 
         return accepted;
 

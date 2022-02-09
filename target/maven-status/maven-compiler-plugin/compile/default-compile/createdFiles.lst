@@ -1,5 +1,7 @@
 com\vieira\sogolon\app\controller\Rebel.class
 com\vieira\sogolon\app\model\RebelTeam.class
-com\vieira\sogolon\app\Main.class
 com\vieira\sogolon\app\view\ICView.class
+com\vieira\sogolon\app\view\ICView$1.class
+com\vieira\sogolon\app\enums\Order.class
+com\vieira\sogolon\app\Main.class
 com\vieira\sogolon\app\enums\Race.class

@@ -9,7 +9,6 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-//@AllArgsConstructor
 @NoArgsConstructor
 public class Rebel {
     Scanner scan;
@@ -19,15 +18,15 @@ public class Rebel {
     private String regex = "^[\\p{L} .'-]+$";
 
     @Getter
-    @NotNull
+    @NotNull(message = "Name cannot be null!")
     private String name;
 
     @Getter
-    @NotNull
+    @NotNull(message = "Age cannot be null!")
     private int Age;
 
     @Getter
-    @NotNull
+    @NotNull(message = "Race cannot be null!")
     private Race race;
 
     public void askData() {
@@ -51,19 +50,7 @@ public class Rebel {
 
                 boolean isValid = validateEnteredLetters(name);
 
-                if (!isValid) {
-                    System.out.println("#: Please, enter a valid name!");
-                    System.out.print("#: ");
-                    name = "";
-                }
-
-                if (name.isBlank() || name.isEmpty()) {
-                    System.out.println("#: Please, fill in the name field!");
-                    System.out.print("#: ");
-                    name = "";
-                }
-
-                if (name.length() < acceptableNameLength) {
+                if (!isValid || name.isBlank() || name.isEmpty() || name.length() < acceptableNameLength) {
                     System.out.println("#: Please, enter a valid name!");
                     System.out.print("#: ");
                     name = "";
@@ -99,6 +86,7 @@ public class Rebel {
                 }
             } catch (InputMismatchException e) {
                 System.out.println("#: Invalid age!");
+                System.out.print("#: ");
             }
             scan.nextLine();
         } while(age == 0);
@@ -108,7 +96,7 @@ public class Rebel {
     }
 
     private Race askRace() {
-        int index = -1;
+        int index;
 
         System.out.println("################## What is your rebel race? #####################");
 
@@ -122,22 +110,25 @@ public class Rebel {
             try {
                 index = scan.nextInt();
 
-                if (index < 0 || index >= Race.values().length) {
-                    System.out.println("#: You entered an invalid index! Please, correct it!");
-                    askRace();
-                    return null;
+                if (index >= 0 && index <= Race.values().length) {
+
+                    for (Race race : Race.values()) {
+                        if (index == race.ordinal()) {
+                            return Race.valueOf(race.name());
+                        }
+                    }
+
                 }
 
-                for (Race race : Race.values()) {
-                    if (index == race.ordinal()) {
-                        return Race.valueOf(race.name());
-                    }
-                }
+                System.out.println("#: You entered an invalid index! Please, correct it!");
+                System.out.print("#: ");
 
             } catch (InputMismatchException e) {
                 System.out.println("#: Invalid index! Please, fill in this field correctly!");
                 System.out.print("#: ");
             }
+
+            index = -1;
 
             scan.nextLine();
 
