@@ -3,14 +3,12 @@ package com.vieira.sogolon.app.view;
 import com.vieira.sogolon.app.controller.Rebel;
 import com.vieira.sogolon.app.enums.Order;
 import com.vieira.sogolon.app.model.RebelTeam;
-import lombok.Data;
 import lombok.Getter;
 
 import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
-@Data
 public class ICView {
     Scanner scan;
 
@@ -58,7 +56,6 @@ public class ICView {
                     break;
                 case 3:
                     Order orderBy = chooseOrder();
-                    System.out.println("orderBy: " + orderBy);
                     switchOrder(orderBy);
                 default:
                     System.out.println("#: Closing the application...");
@@ -155,16 +152,19 @@ public class ICView {
 
         switch (orderBy) {
             case AGE:
-//                team.orderByAge(team.getAccepted());
-                System.out.println("Ordered by age: " + team.orderByAge(team.getAccepted()));
+                team.selectionSort(team.getAccepted(), "Age");
+                team.printList("age");
+                team.printListOnScreen("age");
                 break;
             case NAME:
-//                team.orderByName(team.getAccepted());
-                System.out.println("Ordered by name: " + team.orderByName(team.getAccepted()));
+                team.selectionSort(team.getAccepted(), "Name");
+                team.printList("name");
+                team.printListOnScreen("name");
                 break;
             case RACE:
-//                team.orderByRace(team.getAccepted());
-                System.out.println("Ordered by race: " + team.orderByRace(team.getAccepted()));
+                team.selectionSort(team.getAccepted(), "Race");
+                team.printList("race");
+                team.printListOnScreen("race");
                 break;
             default:
                 System.out.println("#: Invalid option!");

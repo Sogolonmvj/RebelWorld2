@@ -1,6 +1,7 @@
 package com.vieira.sogolon.app.controller;
 
 import com.vieira.sogolon.app.enums.Race;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.util.InputMismatchException;
@@ -8,8 +9,7 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-@Data
-@AllArgsConstructor
+//@AllArgsConstructor
 @NoArgsConstructor
 public class Rebel {
     Scanner scan;
@@ -19,12 +19,15 @@ public class Rebel {
     private String regex = "^[\\p{L} .'-]+$";
 
     @Getter
+    @NotNull
     private String name;
 
     @Getter
+    @NotNull
     private int Age;
 
     @Getter
+    @NotNull
     private Race race;
 
     public void askData() {

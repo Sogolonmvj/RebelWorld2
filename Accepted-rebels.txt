@@ -1,3 +1,7 @@
-List of accepted rebels: 
-
-Rebel Name: Luke - Rebel Age: 29 - Rebel Race: null
+List of accepted rebels sorted by name: 
+Rebel Name: Fred - Rebel Age: 45 - Rebel Race: Humano
+Rebel Name: Kila - Rebel Age: 32 - Rebel Race: Rakata
+Rebel Name: Poril - Rebel Age: 56 - Rebel Race: Humano
+Rebel Name: Tiao - Rebel Age: 34 - Rebel Race: Gree
+Rebel Name: Wald - Rebel Age: 67 - Rebel Race: Rakata
+Rebel Name: Yuro - Rebel Age: 54 - Rebel Race: Gree
