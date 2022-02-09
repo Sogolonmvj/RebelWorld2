@@ -95,7 +95,7 @@ public class RebelTeam {
 
         try {
             @Cleanup PrintWriter writer = new PrintWriter("Accepted-rebels.txt", "UTF-8");
-            writer.printf("List of accepted rebels sorted by %s: ", sortBy);
+            writer.printf("List of accepted rebels sorted by %s: %n", sortBy);
             writer.println("");
 
             for (Rebel rebel : accepted.values()) {
@@ -113,6 +113,7 @@ public class RebelTeam {
     public void printListOnScreen(String orderBy) {
 
         System.out.printf("#: List of accepted rebels sorted by %s: %n", orderBy);
+        System.out.println("");
 
         for (Rebel rebel : accepted.values()) {
             System.out.printf("#: %s %n", rebel);
